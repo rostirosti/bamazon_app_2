@@ -11,4 +11,7 @@
 - you will get a prompt that will walk you through the shopping experience
 - if you run out of items then go ahead and "refill" by dropping the tables and remaking the db using the "queries" file
 
+# video walkthrough
+- go to https://1drv.ms/f/s!Avf_TXeHvhZ9-0s9sz96T7RZfmaN to see the video walkthrough
+
 # good luck!
