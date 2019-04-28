@@ -8,31 +8,32 @@ CREATE TABLE products(
   department_name VARCHAR(30),
   price DECIMAL(12,2),
   stock_quantity INTEGER,
+  product_sales DECIMAL(12,2),
   PRIMARY KEY(item_id)
 );
 
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("PS4", "Electronics", 300, 40);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Nintendo Switch", "Electronics", 400.32, 12);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("InstaPot", "Cooking", 98.22, 20);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("NEST Thermostat", "Electronics", 199, 5);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("iPhone XS", "Electronics", 899.99, 11);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("June Oven", "Cooking", 700, 3);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Nespresso Pixie", "Cooking", 99.99, 8);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Blendec Blender", "Cooking", 399.99, 7);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Sega Genesis", "Electronics", 49.99, 2);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Sega Dreamcast", "Electronics", 89.99, 10);
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Polaroid Camera", "Electronics", 1495.99, 1);
 
-SELECT *
-from products
+CREATE TABLE departments(
+  department_id INTEGER(11) AUTO_INCREMENT NOT NULL,
+  department_name VARCHAR(30),
+  over_head_costs DECIMAL(12,2),
+  PRIMARY KEY(department_id)
+);
+
+
+select *
+from departments
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Electronics", 3000);
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Grocery", 23300);
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Furniture", 3000);
+
+INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
+VALUES ("Blendec Blender", "Cooking", 399.99, 7, 20000);
+INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
+VALUES ("Sega Dreamcast", "Electronics", 89.99, 10, 24039);
+INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
+VALUES ("Polaroid Camera", "Electronics", 1495.99, 3, 20000);
