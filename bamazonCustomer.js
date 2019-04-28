@@ -115,7 +115,7 @@ var productIDQuery = function () {
         console.log("this is the product ID the user selected " + prod_id + " this is the quantity the user selected " + quant_num);
 
         //querying the db by ID
-        var query = "SELECT item_id, product_name, department_name, price, stock_quantity FROM products WHERE ?";
+        var query = "SELECT item_id, product_name, department_name, price, stock_quantity, product_sales FROM products WHERE ?";
         connection.query(query, {
             item_id: prod_id
         }, function (err, res) {
@@ -126,6 +126,7 @@ var productIDQuery = function () {
             for (var i = 0; i < res.length; i++) {
                 var availStock = res[i].stock_quantity;
                 price_output = res[i].price;
+                prodSales = res[i].product_sales;
             }
 
             //updating stock
@@ -133,9 +134,13 @@ var productIDQuery = function () {
             var updateStock = function () {
                 console.log("Updating all quantities...\n");
                 let query = connection.query(
-                    "UPDATE products SET ? WHERE ?",
+                    "UPDATE products SET ?, ? WHERE ?",
                     [{
                             stock_quantity: stockCalc
+                        }, 
+
+                        {
+                            product_sales: newSale
                         },
                         {
                             item_id: prod_id
@@ -152,8 +157,10 @@ var productIDQuery = function () {
             if (quant_num < availStock) {
                 console.log("We have some stock " + availStock);
                 var stockCalc = availStock - quant_num;
+                var profitM = price_output * quant_num;
+                var newSale = prodSales + profitM;
                 updateStock();
-                console.log("Your total cost is " + price_output * quant_num)
+                console.log(profitM + " Your total cost is " + price_output * quant_num)
                 connection.end();
 
             } else {
