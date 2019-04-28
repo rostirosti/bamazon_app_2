@@ -9,4 +9,6 @@
 # how to use
 - run the app my running "bamazonCustomer.js", "bamazonManager.js", and "bamazonSupervisor.js"
 - you will get a prompt that will walk you through the shopping experience
-- if you run out of items then go ahead and "refill" by dropping the tables and remaking the db
+- if you run out of items then go ahead and "refill" by dropping the tables and remaking the db using the "queries" file
+
+# good luck!
